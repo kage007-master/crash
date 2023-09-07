@@ -1,0 +1,141 @@
+@font-face {
+  font-family: Montserrat;
+  src: url(./app/assets/fonts/Montserrat-Regular.ttf);
+}
+
+::-webkit-scrollbar {
+  cursor: pointer;
+  width: 2px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  cursor: pointer;
+  background: #3b415c;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background: #4b308b;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #613ce5;
+}
+
+.m-rounded {
+  @apply border border-border rounded-xl;
+}
+
+.anim {
+  @apply transition-colors duration-300;
+}
+
+.m-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    top: 60%;
+  }
+  to {
+    opacity: 1;
+    top: 50%;
+  }
+}
+.modal-fade {
+  animation: fadeIn 0.3s;
+}
+
+@keyframes sidebar-in {
+  from {
+    opacity: 0;
+    left: -100%;
+  }
+  to {
+    opacity: 1;
+    left: 0;
+  }
+}
+.anim-in-sidebar {
+  animation: sidebar-in 0.3s;
+}
+@keyframes sidebar-out {
+  from {
+    opacity: 1;
+    left: 0;
+  }
+  to {
+    opacity: 0;
+    left: -100%;
+  }
+}
+.anim-out-sidebar {
+  animation: sidebar-out 0.3s;
+}
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    scale: 80%;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+.anim-dropdown {
+  animation: dropdown 0.3s;
+}
+.modal-content {
+  border-radius: 8px;
+  position: absolute;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background-color: #1b1b24;
+  border: none;
+  color: #6d6d8f;
+  box-shadow: 5px 5px 8px 0px rgba(0, 0, 0, 0.295);
+  outline: none;
+}
+/* @media only screen and (max-width: 500px) {
+  #modalAuth {
+    width: 100%;
+  }
+} */
+
+.blur {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 0px;
+  top: 0px;
+
+  background: #9595b9;
+  opacity: 0.72;
+  filter: blur(60px) !important;
+}
+
+.blur2 {
+  position: absolute;
+  width: 90%;
+  height: 25%;
+  right: 5%;
+  bottom: 4%;
+  background: #292938;
+  filter: blur(25px);
+}
