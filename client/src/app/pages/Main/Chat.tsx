@@ -90,7 +90,7 @@ const Chat = () => {
           }}
         ></input>
         <button className="w-[48px] h-[48px] text-center justify-center flex items-center rounded-full text-xs md:text-base relative transition-all duration-300 hover:shadow-[0_0_15px_5px_#818cf850]">
-          <Iconify icon={"uil:smile"} className={"w-4 h-4"}></Iconify>
+          <Iconify icon="uil:smile" className="w-4 h-4"></Iconify>
         </button>
         <button
           className="w-[48px] h-[48px] text-center justify-center flex items-center bg-[url('app/assets/images/button2.png')] bg-[length:100%_100%] text-white rounded-full text-xs md:text-base relative transition-all duration-300 hover:shadow-[0_0_15px_5px_#818cf850]"
