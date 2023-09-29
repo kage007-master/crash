@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMenu, setChat, setWalletConnect } from "app/store/modal.slice";
 import Iconify from "app/components/Iconify";
@@ -10,18 +10,18 @@ import {
 } from "app/hooks/sdkDappHooks";
 import axios from "axios";
 import { setAuth, setLogout } from "app/store/auth.slice";
-import { ToastrContext } from "app/providers/ToastrProvider";
 import Dropdown from "app/components/Dropdown";
 import { getmybet } from "app/store/crash.slice";
 import { AppDispatch, RootState } from "app/store";
 import Dropmenu from "app/components/Dropmenu";
+import { useToast } from "app/Toast";
 
 const Navbar = () => {
+  const toast = useToast();
   const auth = useSelector((state: RootState) => state.auth);
   const account = useGetAccountInfo();
   const isLogin = useGetIsLoggedIn();
   const dispatch = useDispatch<AppDispatch>();
-  const notify = useContext(ToastrContext);
 
   const handleLogin = async () => {
     if (!account.address) return;
@@ -32,21 +32,21 @@ const Navbar = () => {
       if (result && result.status === 200) {
         dispatch(setAuth(result.data));
         dispatch(getmybet());
-        notify.success("Login Successfully!");
+        toast.success("Login Successfully!");
       }
     } catch (errors: any) {
       console.log(errors);
       if (errors.response.status === 400)
-        notify.error(errors.response.data.errors[0].msg);
-      else notify.error("Server Error!");
+        toast.error(errors.response.data.errors[0].msg);
+      else toast.error("Server Error!");
       logout();
-      notify.warning("Wallert Disconnected!");
+      toast.warning("Wallert Disconnected!");
     }
   };
 
   const handleLogout = () => {
     logout();
-    notify.info("Wallet Disconnected");
+    toast.info("Wallet Disconnected");
     dispatch(setLogout());
   };
   useEffect(() => {

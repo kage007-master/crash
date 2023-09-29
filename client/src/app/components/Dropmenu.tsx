@@ -76,7 +76,7 @@ export default function Dropmenu(props: any) {
             className="flex gap-2  items-center hover:bg-indigo/5 px-2 py-1 cursor-pointer text-sm"
             onClick={() => dispatch(setProfile(true))}
           >
-            <Iconify icon={"bx:money-withdraw"} className="w-6 h-6" />
+            <Iconify icon={"pajamas:profile"} className="w-6 h-6" />
             <div>My Profile</div>
           </div>
           <div

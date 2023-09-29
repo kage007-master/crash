@@ -1,13 +1,11 @@
-import React from "react";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import "./App.css";
 import Main from "app/pages/Main";
 import SocketProvider from "./app/providers/socket";
 import MultiversXProvider from "app/providers/MultiversXProvider";
-
 import Modals from "./app/modals";
-import ToastrProvider from "app/providers/ToastrProvider";
+import { ToastProvider } from "app/Toast";
 
 const App = () => {
   return (
@@ -15,10 +13,10 @@ const App = () => {
       {/* <React.StrictMode> */}
       <Provider store={store}>
         <SocketProvider />
-        <ToastrProvider>
+        <ToastProvider>
           <Main />
           <Modals></Modals>
-        </ToastrProvider>
+        </ToastProvider>
       </Provider>
       {/* </React.StrictMode> */}
     </MultiversXProvider>

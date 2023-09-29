@@ -10,17 +10,16 @@ import {
 import { useGetIsLoggedIn } from "app/hooks/sdkDappHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { setWalletConnect } from "app/store/modal.slice";
-import { ToastrContext } from "app/providers/ToastrProvider";
-
 import { ReactComponent as Icon1 } from "app/assets/svg/wallet-icon-1.svg";
 import { ReactComponent as Icon2 } from "app/assets/svg/wallet-icon-2.svg";
 import { ReactComponent as Icon3 } from "app/assets/svg/wallet-icon-3.svg";
 import { ReactComponent as Icon4 } from "app/assets/svg/wallet-icon-4.svg";
 import { RootState } from "app/store";
+import { useToast } from "app/Toast";
 
 Modal.setAppElement("body");
 const ModalWalletConnect = () => {
-  const notify = useContext(ToastrContext);
+  const toast = useToast();
   const isModalOpen = useSelector(
     (state: RootState) => state.modal.walletConnect
   );
@@ -31,7 +30,7 @@ const ModalWalletConnect = () => {
   useEffect(() => {
     if (isLogin) {
       dispatch(setWalletConnect(false));
-      notify.success("Wallect Connected");
+      toast.success("Wallect Connected");
     }
     return () => {};
   }, [isLogin]);

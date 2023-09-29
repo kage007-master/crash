@@ -1,24 +1,21 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Modal from "react-modal";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProfile, setWalletConnect } from "app/store/modal.slice";
-import { useGetAccountInfo, useGetIsLoggedIn } from "app/hooks/sdkDappHooks";
-import Iconify from "app/components/Iconify";
-import { logout } from "app/hooks/sdkDappHooks";
+import { setProfile } from "app/store/modal.slice";
+import { useGetAccountInfo } from "app/hooks/sdkDappHooks";
 import { initAvatar } from "app/config/const";
-import { ToastrContext } from "app/providers/ToastrProvider";
 import axios from "app/components/axios";
 import { getNfts, setAuth } from "app/store/auth.slice";
-import { getmybet } from "app/store/crash.slice";
 import { AppDispatch, RootState } from "app/store";
+import { useToast } from "app/Toast";
 
 Modal.setAppElement("body");
 
 const ModalProfile = () => {
   const [error, setError] = useState("");
   const [avatar, setAvatar] = useState(initAvatar);
-  const notify = useContext(ToastrContext);
+  const toast = useToast();
   const dispatch = useDispatch<AppDispatch>();
   const isOpen = useSelector((state: RootState) => state.modal.profile);
   const account = useGetAccountInfo();
@@ -42,9 +39,9 @@ const ModalProfile = () => {
   const handleSave = async () => {
     if (!name) {
       setError("name");
-      return notify.error("Username required!");
+      return toast.error("Username required!");
     }
-    if (!avatar) return notify.error("Please select your Avatar!");
+    if (!avatar) return toast.error("Please select your Avatar!");
     try {
       const result = await axios.post(
         "https://billing.ddog.club/auth/profile",
@@ -56,14 +53,14 @@ const ModalProfile = () => {
       );
       if (result && result.status === 200) {
         dispatch(setAuth({ ...result.data, token: "", nfts: [] }));
-        notify.success("Successfully Changed!");
+        toast.success("Successfully Changed!");
         dispatch(setProfile(false));
       }
     } catch (errors: any) {
       console.log(errors);
       if (errors.response.status === 400)
-        notify.error(errors.response.data.errors[0].msg);
-      else notify.error("Server Error!");
+        toast.error(errors.response.data.errors[0].msg);
+      else toast.error("Server Error!");
     }
   };
   return (
@@ -101,7 +98,7 @@ const ModalProfile = () => {
         <div className="w-full py-3 flex overflow-auto">
           <img
             src={initAvatar}
-            className="w-full border rounded-full cursor-pointer min-w-[80px] w-20 mx-2"
+            className="w-full border rounded-full cursor-pointer min-w-[80px] max-w-[80px] mx-2"
             onClick={() => setAvatar(initAvatar)}
           />
           {auth.nfts.map((item: any) => {
@@ -109,7 +106,7 @@ const ModalProfile = () => {
               <img
                 src={item.url}
                 key={item.url}
-                className="w-full border rounded-full cursor-pointer min-w-[80px] w-20 mx-2"
+                className="w-full border rounded-full cursor-pointer min-w-[80px] max-w-[80px] mx-2"
                 onClick={() => setAvatar(item.url)}
               />
             );

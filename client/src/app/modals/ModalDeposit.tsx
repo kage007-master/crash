@@ -5,25 +5,25 @@ import { RootState } from "app/store";
 import ChainList from "app/components/ChainList";
 import NetworkList from "app/components/NetworkList";
 import { ReactComponent as Copy } from "app/assets/svg/Copy.svg";
-import { ToastrContext } from "app/providers/ToastrProvider";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { networks } from "app/config/const";
 import { QRCodeSVG } from "qrcode.react";
 import { shortenAddress } from "app/utils/util";
 import Iconify from "app/components/Iconify";
+import { useToast } from "app/Toast";
 
 Modal.setAppElement("body");
 
 const ModalDeposit = () => {
   const dispatch = useDispatch();
   const deposit = useSelector((state: RootState) => state.modal.deposit);
-  const notify = useContext(ToastrContext);
+  const toast = useToast();
   const [chain, setChain] = useState("ebone");
   const [network, setNetwork] = useState("mvx");
   const { user } = useSelector((state: RootState) => state.auth);
   const copyStringToClipboard = async () => {
     await navigator.clipboard.writeText(user.wallet[network].address);
-    notify.info("Copied!");
+    toast.info("Copied!");
   };
   const onSetChain = (newchain: string) => {
     if (newchain != chain) {

@@ -5,20 +5,19 @@ import { RootState } from "app/store";
 import { useState, useEffect } from "react";
 import ChainList from "app/components/ChainList";
 import NetworkList from "app/components/NetworkList";
-import { ToastrContext } from "app/providers/ToastrProvider";
-import { useContext } from "react";
 import { fees, limits, networks } from "app/config/const";
 import NumberInput from "app/components/NumberInput";
 import axios from "axios";
 import { setBalance } from "app/store/auth.slice";
 import Iconify from "app/components/Iconify";
+import { useToast } from "app/Toast";
 
 Modal.setAppElement("body");
 
 const ModalWithdraw = () => {
   const dispatch = useDispatch();
   const withdraw = useSelector((state: RootState) => state.modal.withdraw);
-  const notify = useContext(ToastrContext);
+  const toast = useToast();
   const [chain, setChain] = useState("ebone");
   const [network, setNetwork] = useState("mvx");
   const [to, setReciever] = useState("");
@@ -41,12 +40,12 @@ const ModalWithdraw = () => {
   };
 
   const onWithdraw = async () => {
-    if (!to) notify.warning("Input your withdrawal address.");
-    if (Number(Amount) === 0) notify.warning("Input your withdrawal amount.");
+    if (!to) toast.warning("Input your withdrawal address.");
+    if (Number(Amount) === 0) toast.warning("Input your withdrawal amount.");
     if (Number(Amount) > user.balance[chain as TCoin])
-      notify.warning("You have insufficient amount to withdraw.");
+      toast.warning("You have insufficient amount to withdraw.");
     if (Number(Amount) < limits[chain as TCoin][network])
-      notify.warning("You should have a minimum withdrawal amount.");
+      toast.warning("You should have a minimum withdrawal amount.");
     if (
       Number(Amount) >= limits[chain as TCoin][network] &&
       to &&
@@ -63,7 +62,7 @@ const ModalWithdraw = () => {
             amount: Number(Amount),
           })
         ).data;
-        notify.success(result);
+        toast.success(result);
         dispatch(setBalance({ chain, amount: -Number(Amount) }));
       } catch (err) {
         console.log(err);

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { coinSVG } from "app/config/const";
 import { socketEvents } from "app/providers/socket";
@@ -6,14 +6,14 @@ import NumberInput from "app/components/NumberInput";
 import Iconify from "app/components/Iconify";
 import html2canvas from "html2canvas";
 import { setScreenshot, setSetting } from "app/store/modal.slice";
-import { ToastrContext } from "app/providers/ToastrProvider";
 import { setBalance } from "app/store/auth.slice";
 import { RootState } from "app/store";
 import { f } from "../../utils/util";
+import { useToast } from "app/Toast";
 
 const Action = (props: any) => {
   const dispatch = useDispatch();
-  const notify = useContext(ToastrContext);
+  const toast = useToast();
   const chain = useSelector((state: RootState) => state.modal.chain);
   const fixedBetAmount = 8;
   const maxBetAmount = useSelector(
@@ -163,7 +163,7 @@ const Action = (props: any) => {
           className="py-3 md:py-4 min-w-[200px] px-6 text-center justify-center flex items-center bg-[url('app/assets/images/button.png')] bg-[length:100%_100%] text-white rounded-full text-base relative transition-all duration-300 hover:shadow-[0_0_15px_5px_#818cf850]"
           onClick={() => {
             !auth.token
-              ? notify.error("Please login!")
+              ? toast.error("Please login!")
               : gameState.isRising && gameState.timeElapsed <= 5 && !me
               ? socketEvents.emitBet({
                   address: auth.user.address,

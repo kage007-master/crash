@@ -4,12 +4,11 @@ import { setSwap } from "app/store/modal.slice";
 import { RootState } from "app/store";
 import { useState, useEffect } from "react";
 import ChainList from "app/components/ChainList";
-import { ToastrContext } from "app/providers/ToastrProvider";
-import { useContext } from "react";
 import NumberInput from "app/components/NumberInput";
 import axios from "axios";
 import Iconify from "app/components/Iconify";
 import { setBalance } from "app/store/auth.slice";
+import { useToast } from "app/Toast";
 
 let prices: any;
 Modal.setAppElement("body");
@@ -17,7 +16,7 @@ Modal.setAppElement("body");
 const ModalSwap = () => {
   const dispatch = useDispatch();
   const swap = useSelector((state: RootState) => state.modal.swap);
-  const notify = useContext(ToastrContext);
+  const toast = useToast();
   const [src, setSrc] = useState("egld");
   const [dest, setDest] = useState("ebone");
   const { user } = useSelector((state: RootState) => state.auth);
@@ -42,9 +41,9 @@ const ModalSwap = () => {
   }, []);
 
   const onSwap = async () => {
-    if (Number(from) === 0) notify.warning("Input correct swap amount.");
+    if (Number(from) === 0) toast.warning("Input correct swap amount.");
     if (Number(from) > user.balance[src as TCoin])
-      notify.warning("You have insufficient amount to swap.");
+      toast.warning("You have insufficient amount to swap.");
     if (Number(from) > 0 && user.balance[src as TCoin] >= Number(from)) {
       let { amount, result } = (
         await axios.post("https://billing.ddog.club/swap", {
