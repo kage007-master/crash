@@ -41,7 +41,7 @@ const Main = () => {
               <img
                 src="/images/shine.png"
                 className="w-4/5 absolute left-[10%] z-[-2] bottom-0 "
-              ></img>
+              />
               <div className="bottom-0 absolute bg-gradient-to-r from-[#fff0] via-[#fff1] to-[#fff0] h-0.5 w-full z-[-1]"></div>
               {tabs.map((item: any, id: number) => {
                 return (

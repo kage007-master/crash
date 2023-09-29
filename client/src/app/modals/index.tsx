@@ -1,5 +1,5 @@
 import React from "react";
-import ModalSignUp from "./ModalSignUp";
+import ModalProfile from "./ModalProfile";
 import ModalWalletConnect from "./ModalWalletConnect";
 import ModalScreenshot from "./ModalScreenshot";
 import ModalSetting from "./ModalSetting";
@@ -16,9 +16,9 @@ const Modals = () => {
       <ModalDeposit />
       <ModalWithdraw />
       <ModalSwap />
-      <ModalSignUp></ModalSignUp>
-      <ModalWalletConnect></ModalWalletConnect>
-      <ModalScreenshot></ModalScreenshot>
+      <ModalProfile />
+      <ModalWalletConnect />
+      <ModalScreenshot />
     </>
   );
 };

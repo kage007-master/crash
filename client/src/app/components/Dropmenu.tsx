@@ -2,7 +2,12 @@ import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Iconify from "./Iconify";
 import { RootState } from "app/store";
-import { setDeposit, setSwap, setWithdraw } from "app/store/modal.slice";
+import {
+  setDeposit,
+  setProfile,
+  setSwap,
+  setWithdraw,
+} from "app/store/modal.slice";
 
 export default function Dropmenu(props: any) {
   const dropmenuRef = useRef<HTMLDivElement>(null);
@@ -32,9 +37,11 @@ export default function Dropmenu(props: any) {
 
   return (
     <div ref={dropmenuRef} className={props.className}>
-      <div onClick={toggleDropmenu}>
-        <img src={auth.user.avatar} className="w-12 cursor-pointer"></img>
-      </div>
+      <img
+        onClick={toggleDropmenu}
+        src={auth.user.avatar}
+        className="rounded-full w-12 cursor-pointer"
+      />
       {isOpen && (
         <div
           className={`absolute top-[110%] left-[-120px] bg-border rounded-md z-30 py-2 shadow-md anim-dropdown gap-2 flex flex-col right-0`}
@@ -65,6 +72,13 @@ export default function Dropmenu(props: any) {
             <Iconify icon={"ri:swap-line"} className="w-6 h-6" />
             <div>Swap</div>
           </div> */}
+          <div
+            className="flex gap-2  items-center hover:bg-indigo/5 px-2 py-1 cursor-pointer text-sm"
+            onClick={() => dispatch(setProfile(true))}
+          >
+            <Iconify icon={"bx:money-withdraw"} className="w-6 h-6" />
+            <div>My Profile</div>
+          </div>
           <div
             className="flex gap-2  items-center hover:bg-indigo/5 px-2 py-1 cursor-pointer text-sm"
             onClick={props.handleLogout}

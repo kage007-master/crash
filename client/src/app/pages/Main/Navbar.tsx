@@ -1,12 +1,6 @@
 import { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setLogin,
-  setMenu,
-  setChat,
-  setSignUp,
-  setWalletConnect,
-} from "app/store/modal.slice";
+import { setMenu, setChat, setWalletConnect } from "app/store/modal.slice";
 import Iconify from "app/components/Iconify";
 import { ReactComponent as Chat2 } from "app/assets/svg/Chat2.svg";
 import {
@@ -24,7 +18,6 @@ import Dropmenu from "app/components/Dropmenu";
 
 const Navbar = () => {
   const auth = useSelector((state: RootState) => state.auth);
-  const signUp = useSelector((state: RootState) => state.modal.signUp);
   const account = useGetAccountInfo();
   const isLogin = useGetIsLoggedIn();
   const dispatch = useDispatch<AppDispatch>();
@@ -58,7 +51,6 @@ const Navbar = () => {
   };
   useEffect(() => {
     if (!isLogin) return;
-    if (signUp) return;
     dispatch(setWalletConnect(false));
     handleLogin();
     return () => {};
@@ -88,25 +80,14 @@ const Navbar = () => {
               <Dropdown />
             </div>
           ) : (
-            <>
-              <button
-                className="m-rounded px-5 py-4 text-xs md:text-base hover:bg-card anim"
-                onClick={() => {
-                  dispatch(setWalletConnect(true));
-                  dispatch(setLogin(true));
-                }}
-              >
-                Login
-              </button>
-              <button
-                className="m-rounded px-5 py-4 text-xs md:text-base hover:bg-indigoBright anim bg-indigo text-white "
-                onClick={() => {
-                  dispatch(setSignUp(true));
-                }}
-              >
-                Sign Up
-              </button>
-            </>
+            <button
+              className="m-rounded px-5 py-4 text-xs md:text-base hover:bg-indigoBright anim bg-indigo text-white"
+              onClick={() => {
+                dispatch(setWalletConnect(true));
+              }}
+            >
+              Connect Wallet
+            </button>
           )}
           {auth.token && (
             <Dropmenu

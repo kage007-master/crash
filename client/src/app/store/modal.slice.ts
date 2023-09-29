@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface ModalState {
-  signUp: boolean;
-  login: boolean;
+  profile: boolean;
   walletConnect: boolean;
   selchain: boolean;
   setting: boolean;
@@ -16,8 +15,7 @@ interface ModalState {
 }
 
 const initialState: ModalState = {
-  signUp: false,
-  login: false,
+  profile: false,
   walletConnect: false,
   selchain: false,
   setting: false,
@@ -34,8 +32,8 @@ export const slice = createSlice({
   name: "modals",
   initialState,
   reducers: {
-    setSignUp: (state, action) => {
-      state.signUp = action.payload;
+    setProfile: (state, action) => {
+      state.profile = action.payload;
     },
     setWalletConnect: (state, action) => {
       state.walletConnect = action.payload;
@@ -48,9 +46,6 @@ export const slice = createSlice({
     },
     setMenu: (state, action) => {
       state.menu = action.payload;
-    },
-    setLogin: (state, action) => {
-      state.login = action.payload;
     },
     setChain: (state, action) => {
       state.chain = action.payload;
@@ -74,12 +69,12 @@ export const slice = createSlice({
 });
 
 export const {
-  setSignUp,
+  setProfile,
   setWalletConnect,
   setMenu,
   setSelChain,
   setSetting,
-  setLogin,
+  // setLogin,
   setChain,
   setScreenshot,
   setChat,
