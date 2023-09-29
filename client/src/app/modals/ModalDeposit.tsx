@@ -23,7 +23,7 @@ const ModalDeposit = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const copyStringToClipboard = async () => {
     await navigator.clipboard.writeText(user.wallet[network].address);
-    toast.info("Copied!");
+    toast.success("Copied!");
   };
   const onSetChain = (newchain: string) => {
     if (newchain != chain) {

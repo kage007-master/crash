@@ -46,7 +46,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    toast.info("Wallet Disconnected");
+    toast.success("Wallet Disconnected");
     dispatch(setLogout());
   };
   useEffect(() => {

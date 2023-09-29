@@ -3,6 +3,9 @@ import { createPortal } from "react-dom";
 
 import { ToastContext } from "./ToastContext";
 import { Toast } from "./Toast";
+import err from "../assets/images/error.png";
+import suc from "../assets/images/success.png";
+import war from "../assets/images/warning.png";
 
 // Create a random ID
 function generateUEID() {
@@ -15,20 +18,20 @@ function generateUEID() {
 
 export const ToastProvider = (props) => {
   const [toasts, setToasts] = useState([]);
-  const error = (content) =>
-    setToasts((currentToasts) => [
-      ...currentToasts,
-      { id: generateUEID(), content },
-    ]);
   const success = (content) =>
     setToasts((currentToasts) => [
       ...currentToasts,
-      { id: generateUEID(), content },
+      { id: generateUEID(), content, title: "Success!", type: 0 },
+    ]);
+  const error = (content) =>
+    setToasts((currentToasts) => [
+      ...currentToasts,
+      { id: generateUEID(), content, title: "Error!", type: 1 },
     ]);
   const warning = (content) =>
     setToasts((currentToasts) => [
       ...currentToasts,
-      { id: generateUEID(), content },
+      { id: generateUEID(), content, title: "Warning!", type: 1 },
     ]);
   const close = (id) =>
     setToasts((currentToasts) =>
@@ -41,11 +44,37 @@ export const ToastProvider = (props) => {
       {props.children}
 
       {createPortal(
-        <div className="absolute top-0 w-full flex items-center z-50">
+        <div className="toasts-wrapper z-50">
           {toasts.map((toast) => (
-            <Toast key={toast.id} close={() => close(toast.id)}>
-              {toast.content}
-            </Toast>
+            <div
+              className={`toast toast-${
+                toast.type === 0
+                  ? "success"
+                  : toast.type === 1
+                  ? "error"
+                  : "warning"
+              } justify-between py-4 px-4 w-full items-center`}
+              key={toast.id}
+            >
+              <div className="flex items-center">
+                <img
+                  src={toast.type === 0 ? suc : toast.type === 1 ? err : war}
+                />
+                <div className="px-2">
+                  <p className="text-lg font-[700]">{toast.title}</p>
+                  <p className="text-white">{toast.content}</p>
+                </div>
+              </div>
+              <div>
+                <button
+                  onClick={() => close(toast.id)}
+                  className="text-white text-3xl"
+                >
+                  x
+                </button>
+                <Toast close={() => close(toast.id)} />
+              </div>
+            </div>
           ))}
         </div>,
         document.body
