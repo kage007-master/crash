@@ -7,7 +7,7 @@
     "baseUrl": "./src",
     "esModuleInterop": true
   },
-  "baseUrl": "/src",
+  "baseUrl": "./src",
   "include": [
     "src",
   ],

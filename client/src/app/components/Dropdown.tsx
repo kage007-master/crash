@@ -38,7 +38,7 @@ export default function Dropdown() {
       <div onClick={toggleDropdown}>
         <div className="flex justify-between items-center md:border border-border rounded-xl md:p-4 gap-2 text-base cursor-pointer">
           <div className="flex items-center gap-2">
-            <MainCoin className="w-0 h-6 md:w-6"></MainCoin>
+            <MainCoin className="w-0 h-6 md:w-6"/>
             <div className="hidden md:flex gap-1">
               {auth.user.balance[chain].toFixed(8)}{" "}
               <div className="uppercase">{chain}</div>
@@ -47,7 +47,7 @@ export default function Dropdown() {
           <Iconify
             icon={"material-symbols:keyboard-arrow-down-rounded"}
             className={"w-5 h-5 text-white hidden md:block"}
-          ></Iconify>
+          />
         </div>
       </div>
       {isOpen && (
@@ -78,7 +78,7 @@ export default function Dropdown() {
                     dispatch(setChain(currency));
                   }}
                 >
-                  <CoinIcon className="w-6 h-6"></CoinIcon>
+                  <CoinIcon className="w-6 h-6"/>
                   <div>{auth.user.balance[currency as TCoin].toFixed(8)}</div>
                   <div className="uppercase">{currency}</div>
                 </div>

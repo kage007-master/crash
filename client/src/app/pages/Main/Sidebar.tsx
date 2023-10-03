@@ -1,5 +1,4 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as Logo } from "app/assets/svg/Logo.svg";
 import { ReactComponent as Text } from "app/assets/svg/Text.svg";
 import { ReactComponent as Home } from "app/assets/svg/Home.svg";
@@ -57,10 +56,7 @@ const Sidebar = () => {
               dispatch(setMenu(false));
             }}
           >
-            <Iconify
-              icon="uiw:close"
-              className={" w-4 h-4 cursor-pointer"}
-            ></Iconify>
+            <Iconify icon="uiw:close" className={" w-4 h-4 cursor-pointer"} />
           </button>
         </div>
 

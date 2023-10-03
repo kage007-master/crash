@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "app/store";
-import { f } from "../../utils/util";
+import { f } from "app/utils/util";
 
 const rocketImageCount = 1;
 const crashImageCount = 60;

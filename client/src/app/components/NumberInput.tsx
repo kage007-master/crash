@@ -17,7 +17,7 @@ const NumberInput = (props: any) => {
         handleChange(e.target.value);
       }}
       onBlur={props.onBlur}
-    ></input>
+    />
   );
 };
 export default NumberInput;

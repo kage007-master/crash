@@ -1,4 +1,3 @@
-import React from "react";
 import { coinSVG } from "app/config/const";
 import { useSelector } from "react-redux";
 import { RootState } from "app/store";

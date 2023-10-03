@@ -1,11 +1,11 @@
 import { Provider } from "react-redux";
-import { store } from "./app/store";
-import "./App.css";
-import Main from "app/pages/Main";
-import SocketProvider from "./app/providers/socket";
+import { store } from "app/store";
+import SocketProvider from "app/providers/socket";
 import MultiversXProvider from "app/providers/MultiversXProvider";
-import Modals from "./app/modals";
 import { ToastProvider } from "app/Toast";
+import Main from "app/pages/Main";
+import Modals from "app/modals";
+import "App.css";
 
 const App = () => {
   return (

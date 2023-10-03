@@ -68,7 +68,7 @@ const Navbar = () => {
           <Iconify
             icon="material-symbols:menu-rounded"
             className="w-6 h-6 cursor-pointer"
-          ></Iconify>
+          />
         </div>
         <div className="justify-center items-center gap-2 uppercase text-xs hidden lg:flex">
           <div className="rounded-full w-1.5 h-1.5 bg-green"></div>

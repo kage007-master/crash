@@ -1,5 +1,3 @@
-import React from "react";
-
 const ContestTable = () => {
   return (
     <table className="hidden lg:block w-full text-xs">

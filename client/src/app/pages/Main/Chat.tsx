@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { setChat } from "app/store/modal.slice";
 import { useDispatch, useSelector } from "react-redux";
 import Iconify from "app/components/Iconify";
 import { socketEvents } from "app/providers/socket";
-import { getTimeAgo, shortenName } from "app/utils/util";
+import { getTimeAgo } from "app/utils/util";
 import { ReactComponent as Chat1 } from "app/assets/svg/Chat1.svg";
 import { RootState } from "app/store";
 
 const Chat = () => {
   const [text, setText] = useState("");
-  const ref = React.useRef<HTMLInputElement>(null);
+  const ref = useRef<HTMLInputElement>(null);
   const chat = useSelector((state: RootState) => state.modal.chat);
   const messages = useSelector((state: RootState) => state.message.history);
   const user = useSelector((state: RootState) => state.auth.user);
@@ -28,10 +28,7 @@ const Chat = () => {
             dispatch(setChat(false));
           }}
         >
-          <Iconify
-            icon="uiw:close"
-            className={" w-5 h-5 cursor-pointer"}
-          ></Iconify>
+          <Iconify icon="uiw:close" className={" w-5 h-5 cursor-pointer"} />
         </button>
       </div>
       <div className="chat-content" ref={ref}>
@@ -90,7 +87,7 @@ const Chat = () => {
           }}
         ></input>
         <button className="w-[48px] h-[48px] text-center justify-center flex items-center rounded-full text-xs md:text-base relative transition-all duration-300 hover:shadow-[0_0_15px_5px_#818cf850]">
-          <Iconify icon="uil:smile" className="w-4 h-4"></Iconify>
+          <Iconify icon="uil:smile" className="w-4 h-4" />
         </button>
         <button
           className="w-[48px] h-[48px] text-center justify-center flex items-center bg-[url('app/assets/images/button2.png')] bg-[length:100%_100%] text-white rounded-full text-xs md:text-base relative transition-all duration-300 hover:shadow-[0_0_15px_5px_#818cf850]"

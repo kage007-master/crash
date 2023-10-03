@@ -1,4 +1,3 @@
-import React from "react";
 import ModalProfile from "./ModalProfile";
 import ModalWalletConnect from "./ModalWalletConnect";
 import ModalScreenshot from "./ModalScreenshot";

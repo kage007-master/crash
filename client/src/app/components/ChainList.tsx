@@ -38,13 +38,13 @@ export default function ChainList(props: any) {
           }
         >
           <div className="flex items-center gap-2">
-            <MainCoin className="w-6 h-6"></MainCoin>
+            <MainCoin className="w-6 h-6"/>
             <div className="uppercase">{chain}</div>
           </div>
           <Iconify
             icon={"material-symbols:keyboard-arrow-down-rounded"}
             className={"w-5 h-5 text-white"}
-          ></Iconify>
+          />
         </div>
       </div>
       {isOpen && (
@@ -66,7 +66,7 @@ export default function ChainList(props: any) {
                     setChain(currency);
                   }}
                 >
-                  <CoinIcon className="w-6 h-6"></CoinIcon>
+                  <CoinIcon className="w-6 h-6"/>
                   <div className="uppercase">{currency}</div>
                 </div>
               );

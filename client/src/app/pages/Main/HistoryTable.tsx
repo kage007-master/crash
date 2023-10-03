@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { gethistory } from "app/store/crash.slice";
 import { AppDispatch, RootState } from "app/store";

@@ -37,7 +37,7 @@ export default function NetworkList(props: any) {
           <Iconify
             icon={"material-symbols:keyboard-arrow-down-rounded"}
             className={"w-5 h-5 text-white"}
-          ></Iconify>
+          />
         </div>
       </div>
       {isOpen && (

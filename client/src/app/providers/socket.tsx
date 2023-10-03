@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { io, Socket } from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
-import environment from "../config";
-import { addHistory, addMyBet, setGameState } from "../store/crash.slice";
+import environment from "app/config";
+import { addHistory, addMyBet, setGameState } from "app/store/crash.slice";
 import { setBalance } from "app/store/auth.slice";
 import { newMessage, setMessages } from "app/store/message.slice";
 import { AppDispatch, RootState } from "app/store";

@@ -8,7 +8,7 @@ import html2canvas from "html2canvas";
 import { setScreenshot, setSetting } from "app/store/modal.slice";
 import { setBalance } from "app/store/auth.slice";
 import { RootState } from "app/store";
-import { f } from "../../utils/util";
+import { f } from "app/utils/util";
 import { useToast } from "app/Toast";
 
 const Action = (props: any) => {
@@ -157,7 +157,7 @@ const Action = (props: any) => {
           <Iconify
             icon="simple-line-icons:settings"
             className="w-6 h-6 cursor-pointer"
-          ></Iconify>
+          />
         </div>
         <button
           className="py-3 md:py-4 min-w-[200px] px-6 text-center justify-center flex items-center bg-[url('app/assets/images/button.png')] bg-[length:100%_100%] text-white rounded-full text-base relative transition-all duration-300 hover:shadow-[0_0_15px_5px_#818cf850]"
@@ -208,7 +208,7 @@ const Action = (props: any) => {
           <Iconify
             icon="iconamoon:screen-full-thin"
             className="w-6 h-6 cursor-pointer"
-          ></Iconify>
+          />
         </div>
       </div>
     </div>

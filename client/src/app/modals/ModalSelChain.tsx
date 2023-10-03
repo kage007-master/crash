@@ -45,7 +45,7 @@ const ModalSelChain = () => {
             <Iconify
               icon="uiw:close"
               className={" w-4 h-4 cursor-pointer"}
-            ></Iconify>
+            />
           </button>
         </div>
         <div className="border-t border-indigo/10 mt-3"></div>
@@ -61,7 +61,7 @@ const ModalSelChain = () => {
                     dispatch(setChain(currency));
                   }}
                 >
-                  <CoinIcon className="min-w-[24px] min-h-[24px] w-6 h-6"></CoinIcon>
+                  <CoinIcon className="min-w-[24px] min-h-[24px] w-6 h-6"/>
                   <div>{auth.user.balance[currency as TCoin]}</div>
                   <div className="uppercase">{currency}</div>
                 </div>

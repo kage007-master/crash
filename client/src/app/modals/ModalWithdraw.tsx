@@ -100,7 +100,7 @@ const ModalWithdraw = () => {
           <Iconify
             icon="uiw:close"
             className={"w-6 h-6 cursor-pointer"}
-          ></Iconify>
+          />
         </button>
       </div>
       <ChainList chain={chain} setChain={onSetChain} swap={false} />

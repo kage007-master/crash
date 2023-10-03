@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "app/store/modal.slice";
 import { useGetAccountInfo } from "app/hooks/sdkDappHooks";

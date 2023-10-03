@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useSelector } from "react-redux";
 import { coinSVG } from "app/config/const";
 import { RootState } from "app/store";
@@ -39,7 +39,7 @@ const UserTable = () => {
                 <div className="m-overflow">{player.name}</div>
               </div>
               <div className="m-overflow flex items-center gap-1 w-full">
-                <CoinIcon className="w-4 h-4 flex-none"></CoinIcon>
+                <CoinIcon className="w-4 h-4 flex-none"/>
                 <div className="m-overflow">{player.betAmount.toFixed(8)}</div>
               </div>
               <div className="m-overflow">
@@ -75,7 +75,7 @@ const UserTable = () => {
                 <div className="w-[50%] border-r border-[#37374D]">
                   <div className="text-secondary py-1">Bet</div>
                   <div className="flex items-center gap-2 py-1">
-                    <CoinIcon className="w-4 h-4 flex-none"></CoinIcon>
+                    <CoinIcon className="w-4 h-4 flex-none"/>
                     <div className="text-sm">{player.betAmount.toFixed(8)}</div>
                   </div>
                 </div>

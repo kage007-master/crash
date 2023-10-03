@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import Modal from "react-modal";
 import {
   ExtensionLoginButton,
