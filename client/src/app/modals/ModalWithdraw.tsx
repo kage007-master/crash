@@ -97,10 +97,7 @@ const ModalWithdraw = () => {
             dispatch(setWithdraw(false));
           }}
         >
-          <Iconify
-            icon="uiw:close"
-            className={"w-6 h-6 cursor-pointer"}
-          />
+          <Iconify icon="uiw:close" className={"w-6 h-6 cursor-pointer"} />
         </button>
       </div>
       <ChainList chain={chain} setChain={onSetChain} swap={false} />
@@ -134,7 +131,7 @@ const ModalWithdraw = () => {
         value={Amount}
         fixed={fixedAmount}
         className="w-full h-full bg-back py-4 px-4 m-rounded text-lg text-[white] transition duration-300 outline-none"
-      ></NumberInput>
+      />
       <div className="relative flex my-2 justify-between">
         <p className="">Fee:</p>
         <p className="uppercase">{`${

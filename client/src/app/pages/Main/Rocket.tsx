@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "app/store";
 import { f } from "app/utils/util";
@@ -203,6 +203,12 @@ const drawGraph = (W: number, H: number) => {
   ctx.restore();
 
   ctx.save();
+  ctx.fillStyle = "#292938";
+  ctx.filter = "blur(20px)";
+  ctx.fillRect(0, ORG_Y - 50, width, 100);
+  ctx.restore();
+
+  ctx.save();
   pureGraph();
   let radGrad = ctx.createRadialGradient(
     ORG_X,
@@ -299,7 +305,6 @@ const draw = () => {
 const Rocket = (props: any) => {
   const gameState = useSelector((state: RootState) => state.crash.gameState);
   const players = useSelector((state: RootState) => state.crash.playerState);
-  const canvasRef = useRef(null);
 
   // const drawPlayers = (
   //   ctx: any,
@@ -336,7 +341,7 @@ const Rocket = (props: any) => {
   // };
 
   useEffect(() => {
-    const canvas: any = canvasRef.current;
+    const canvas: any = props.refer.current;
     ctx = canvas.getContext("2d");
     width = canvas.parentElement.offsetWidth;
     height = ((width * 400) / 720) * (width > 384 ? 1 : 2);
@@ -354,12 +359,12 @@ const Rocket = (props: any) => {
   }, [gameState]);
 
   return (
-    <div className="relative bg-[BACKGROUND_COLOR]" ref={props.refer}>
-      <div className="blur"></div>
-      <div className="blur2"></div>
+    <div className="relative bg-[BACKGROUND_COLOR]">
+      {/* <div className="blur"></div>
+      <div className="blur2"></div> */}
       <canvas
         className="mx-auto rounded-3xl"
-        ref={canvasRef}
+        ref={props.refer}
         width={width}
         height={height}
       />

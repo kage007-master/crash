@@ -5,3 +5,5 @@ logs/
 public/
 
 .env
+
+package-lock.json

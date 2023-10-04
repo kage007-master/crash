@@ -97,7 +97,7 @@ const Action = (props: any) => {
               value={betAmount}
               fixed={fixedBetAmount}
               className="w-full h-full bg-back py-3 pr-4 pl-10 m-rounded text-[white] transition duration-300 outline-none"
-            ></NumberInput>
+            />
           </div>
           <button
             onClick={() => {
@@ -134,7 +134,7 @@ const Action = (props: any) => {
               fixed={2}
               disabled={!isAutoCash}
               className={`w-full h-full bg-back py-3 px-4 m-rounded text-white transition duration-300 outline-none disabled:text-secondary`}
-            ></NumberInput>
+            />
           </div>
           <button
             onClick={() => {

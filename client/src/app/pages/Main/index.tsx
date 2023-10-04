@@ -20,18 +20,18 @@ const Main = () => {
   return (
     <>
       <div className="flex text-secondary text-xs lg:base">
-        <Sidebar></Sidebar>
+        <Sidebar />
         <div className="w-full relative lg:ml-24 px-4 lg:px-6">
-          <Navbar></Navbar>
-          <Chat></Chat>
+          <Navbar />
+          <Chat />
           <div className="w-full relative mt-28 md:mt-28">
             <div className="lg:flex lg:gap-8">
               <div className="lg:w-[60%]">
-                <Rocket refer={rocketRef}></Rocket>
-                <Action target={rocketRef}></Action>
+                <Rocket refer={rocketRef} />
+                <Action target={rocketRef} />
               </div>
               <div className="lg:w-[40%] mt-6 lg:mt-0">
-                <UserTable></UserTable>
+                <UserTable />
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@ const Main = () => {
                         <p className="text-white text-[22px] py-8">
                           {item.text}
                         </p>
-                        <item.content></item.content>
+                        <item.content />
                       </>
                     )}
                   </div>

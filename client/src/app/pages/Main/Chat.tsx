@@ -85,7 +85,7 @@ const Chat = () => {
               setText("");
             }
           }}
-        ></input>
+        />
         <button className="w-[48px] h-[48px] text-center justify-center flex items-center rounded-full text-xs md:text-base relative transition-all duration-300 hover:shadow-[0_0_15px_5px_#818cf850]">
           <Iconify icon="uil:smile" className="w-4 h-4" />
         </button>

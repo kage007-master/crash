@@ -96,7 +96,7 @@ const ModalSwap = () => {
           value={from}
           fixed={8}
           className="w-full h-full bg-back py-4 px-4 m-rounded text-[white] transition duration-300 outline-none"
-        ></NumberInput>
+        />
         <div className="absolute right-1 top-[5px]">
           <ChainList
             chain={src}
@@ -136,7 +136,7 @@ const ModalSwap = () => {
           value={to}
           fixed={8}
           className="w-full h-full bg-back py-4 px-4 m-rounded text-[white] transition duration-300 outline-none"
-        ></NumberInput>
+        />
         <div className="absolute right-1 top-[5px]">
           <ChainList
             chain={dest}
