@@ -33,7 +33,7 @@ const crashController = {
         wager: wager[key],
       }));
       result.sort((bet1: any, bet2: any) => {
-        return bet1.wager - bet2.wager;
+        return bet2.wager - bet1.wager;
       });
       res.send(result);
     } catch (err) {
