@@ -16,6 +16,19 @@ const crashController = {
       .limit(10);
     res.send(result);
   },
+  getTopPlayers: async (req: any, res: any) => {
+    const { start, end } = req.body;
+    const bets: any = await BetHistoryModel.find({
+      chain: "betabone",
+      time: { $gt: new Date(start), $lt: new Date(end) },
+    });
+    let wager: any = {};
+    bets.map((bet: any) => {
+      if (wager[bet.address]) wager[bet.address] += bet.betAmount;
+      else wager[bet.address] = bet.betAmount;
+    });
+    console.log(wager);
+  },
 };
 
 export default crashController;
