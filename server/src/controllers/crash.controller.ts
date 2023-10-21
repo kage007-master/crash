@@ -28,10 +28,13 @@ const crashController = {
         if (wager[bet.address]) wager[bet.address] += bet.betAmount;
         else wager[bet.address] = bet.betAmount;
       });
-      let result = Object.keys(wager).map((key: string)=> ({address: key, wager: wager[key]}));
-      res.send(wager);
+      let result = Object.keys(wager).map((key: string) => ({
+        address: key,
+        wager: wager[key],
+      }));
+      res.send(result);
     } catch (err) {
-      res.
+      res.status(500).send("Server error");
     }
   },
 };
