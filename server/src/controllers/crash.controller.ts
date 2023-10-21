@@ -27,7 +27,7 @@ const crashController = {
       if (wager[bet.address]) wager[bet.address] += bet.betAmount;
       else wager[bet.address] = bet.betAmount;
     });
-    console.log(wager);
+    res.send(wager);
   },
 };
 
