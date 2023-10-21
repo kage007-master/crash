@@ -32,6 +32,9 @@ const crashController = {
         address: key,
         wager: wager[key],
       }));
+      result.sort((bet1: any, bet2: any) => {
+        return bet1.wager - bet2.wager;
+      });
       res.send(result);
     } catch (err) {
       res.status(500).send("Server error");
