@@ -17,17 +17,22 @@ const crashController = {
     res.send(result);
   },
   getTopPlayers: async (req: any, res: any) => {
-    const { start, end } = req.body;
-    const bets: any = await BetHistoryModel.find({
-      chain: "betabone",
-      time: { $gt: new Date(start), $lt: new Date(end) },
-    });
-    let wager: any = {};
-    bets.map((bet: any) => {
-      if (wager[bet.address]) wager[bet.address] += bet.betAmount;
-      else wager[bet.address] = bet.betAmount;
-    });
-    res.send(wager);
+    try {
+      const { start, end } = req.body;
+      const bets: any = await BetHistoryModel.find({
+        chain: "betabone",
+        time: { $gt: new Date(start), $lt: new Date(end) },
+      });
+      let wager: any = {};
+      bets.map((bet: any) => {
+        if (wager[bet.address]) wager[bet.address] += bet.betAmount;
+        else wager[bet.address] = bet.betAmount;
+      });
+      let result = Object.keys(wager).map((key: string)=> ({address: key, wager: wager[key]}));
+      res.send(wager);
+    } catch (err) {
+      res.
+    }
   },
 };
 
