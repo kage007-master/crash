@@ -198,7 +198,7 @@ const Action = (props: any) => {
               me.cashPoint === 0
             ? `${Number(
                 (me.betAmount * f(gameState.timeElapsed)).toFixed(3)
-              )}Cash Out`
+              )}\nCash Out`
             : promise
             ? "Loading (Cancel)"
             : "Bet (Next Round)"}

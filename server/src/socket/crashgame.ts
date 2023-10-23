@@ -31,7 +31,7 @@ export const startNewRound = (io: any) => {
     if (user && user.balance) {
       user.balance[player.chain] -= player.betAmount;
       user.balance[player.chain] = Number(
-        user.balance[player.chain].toFixed(8)
+        user.balance[player.chain].toFixed(3)
       );
       totalBet += player.betAmount;
       user.save();
@@ -124,8 +124,8 @@ export const Cashout = async (address: string, time: number) => {
   me.cashPoint = f(time);
   let user: any = await UserModel.findOne({ address: address });
   if (user && user.balance) {
-    user.balance[me.chain] += Number((me.betAmount * me.cashPoint).toFixed(8));
-    user.balance[me.chain] = Number(user.balance[me.chain].toFixed(8));
+    user.balance[me.chain] += Number((me.betAmount * me.cashPoint).toFixed(3));
+    user.balance[me.chain] = Number(user.balance[me.chain].toFixed(3));
   }
   user.save();
   return true;
