@@ -191,7 +191,7 @@ const Action = (props: any) => {
           ) : gameState.isRising && gameState.timeElapsed <= 5 && !me ? (
             "Bet"
           ) : gameState.isRising && gameState.timeElapsed <= 5 && me ? (
-            "Loading"
+            "Loading..."
           ) : gameState.isRising &&
             gameState.timeElapsed > 5 &&
             me &&
@@ -201,9 +201,15 @@ const Action = (props: any) => {
               <p>Cash Out</p>
             </p>
           ) : promise ? (
-            "Loading (Cancel)"
+            <p className="text-[14px]">
+              Loading...
+              <p>(Cancel)</p>
+            </p>
           ) : (
-            "Bet (Next Round)"
+            <p className="text-[14px]">
+              Bet
+              <p>(Next Round)</p>
+            </p>
           )}
         </button>
         <div
