@@ -37,7 +37,7 @@ const MyTable = () => {
                 </div>
                 <div className="text-white py-2">{bet.bonus.toFixed(3)}</div>
                 <div className="text-white py-2 text-right">
-                  {(bet.betAmount * (bet.cashPoint - 1)).toFixed(8)}
+                  {(bet.betAmount * (bet.cashPoint - 1)).toFixed(3)}
                 </div>
               </div>
             );

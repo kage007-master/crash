@@ -62,7 +62,7 @@ const ModalSelChain = () => {
                   }}
                 >
                   <CoinIcon className="min-w-[24px] min-h-[24px] w-6 h-6"/>
-                  <div>{auth.user.balance[currency as TCoin]}</div>
+                  <div>{auth.user.balance[currency as TCoin].toFixed(3)}</div>
                   <div className="uppercase">{currency}</div>
                 </div>
                 {currency === chain ? (
