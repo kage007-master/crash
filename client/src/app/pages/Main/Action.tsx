@@ -197,7 +197,7 @@ const Action = (props: any) => {
             me &&
             me.cashPoint === 0 ? (
             <p>
-              `${Number((me.betAmount * f(gameState.timeElapsed)).toFixed(3))}`
+              {Number((me.betAmount * f(gameState.timeElapsed)).toFixed(3))}
               <p>Cash Out</p>
             </p>
           ) : promise ? (
