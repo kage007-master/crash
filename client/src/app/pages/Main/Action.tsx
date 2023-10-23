@@ -186,22 +186,25 @@ const Action = (props: any) => {
                 });
           }}
         >
-          {!auth.token
-            ? "Place Bet!"
-            : gameState.isRising && gameState.timeElapsed <= 5 && !me
-            ? "Bet"
-            : gameState.isRising && gameState.timeElapsed <= 5 && me
-            ? "Loading"
-            : gameState.isRising &&
-              gameState.timeElapsed > 5 &&
-              me &&
-              me.cashPoint === 0
-            ? `${Number(
-                (me.betAmount * f(gameState.timeElapsed)).toFixed(3)
-              )}\nCash Out`
-            : promise
-            ? "Loading (Cancel)"
-            : "Bet (Next Round)"}
+          {!auth.token ? (
+            "Place Bet!"
+          ) : gameState.isRising && gameState.timeElapsed <= 5 && !me ? (
+            "Bet"
+          ) : gameState.isRising && gameState.timeElapsed <= 5 && me ? (
+            "Loading"
+          ) : gameState.isRising &&
+            gameState.timeElapsed > 5 &&
+            me &&
+            me.cashPoint === 0 ? (
+            <p>
+              `${Number((me.betAmount * f(gameState.timeElapsed)).toFixed(3))}`
+              <p>Cash Out</p>
+            </p>
+          ) : promise ? (
+            "Loading (Cancel)"
+          ) : (
+            "Bet (Next Round)"
+          )}
         </button>
         <div
           className="hidden sm:flex items-center m-rounded cursor-pointer p-3 md:p-4 hover:bg-card anim"
