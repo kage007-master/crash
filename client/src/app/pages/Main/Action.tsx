@@ -19,8 +19,8 @@ const Action = (props: any) => {
   const maxBetAmount = useSelector(
     (state: RootState) => state.auth.user.balance[chain]
   );
-  const minBetAmount = Math.min(Number(0.00000001), Number(maxBetAmount));
-  const [betAmount, setBetAmount] = useState(minBetAmount.toFixed(8));
+  const minBetAmount = Math.min(Number(0.001), Number(maxBetAmount));
+  const [betAmount, setBetAmount] = useState(minBetAmount.toFixed(3));
   const [autoCash, setAutoCash] = useState((1.01).toFixed(2));
   const [isAutoCash, setIsAutoCash] = useState(false);
   const gameState = useSelector((state: RootState) => state.crash.gameState);
@@ -40,7 +40,7 @@ const Action = (props: any) => {
       Number(betAmount) < Number(minBetAmount)
     )
       setBetAmount(
-        Math.min(Number(minBetAmount), Number(maxBetAmount)).toFixed(8)
+        Math.min(Number(minBetAmount), Number(maxBetAmount)).toFixed(3)
       );
     return () => {};
   }, [maxBetAmount]);
@@ -64,7 +64,7 @@ const Action = (props: any) => {
       dispatch(
         setBalance({
           chain: me.chain,
-          amount: Number((me.betAmount * f(gameState.timeElapsed)).toFixed(8)),
+          amount: Number((me.betAmount * f(gameState.timeElapsed)).toFixed(3)),
         })
       );
     socketEvents.emitCashOut({
@@ -196,7 +196,9 @@ const Action = (props: any) => {
               gameState.timeElapsed > 5 &&
               me &&
               me.cashPoint === 0
-            ? "Cash Out"
+            ? `${Number(
+                (me.betAmount * f(gameState.timeElapsed)).toFixed(3)
+              )}Cash Out`
             : promise
             ? "Loading (Cancel)"
             : "Bet (Next Round)"}

@@ -40,7 +40,7 @@ const UserTable = () => {
               </div>
               <div className="m-overflow flex items-center gap-1 w-full">
                 <CoinIcon className="w-4 h-4 flex-none"/>
-                <div className="m-overflow">{player.betAmount.toFixed(8)}</div>
+                <div className="m-overflow">{player.betAmount.toFixed(3)}</div>
               </div>
               <div className="m-overflow">
                 {player.cashPoint ? "x " + player.cashPoint.toFixed(2) : "-"}
@@ -49,7 +49,7 @@ const UserTable = () => {
                 {player.cashPoint
                   ? (
                       Number(player.betAmount) * Number(player.cashPoint - 1)
-                    ).toFixed(8)
+                    ).toFixed(3)
                   : "-"}
               </div>
               <div className="m-overflow text-right">{"-"}</div>

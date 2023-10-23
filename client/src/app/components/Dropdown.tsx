@@ -40,7 +40,7 @@ export default function Dropdown() {
           <div className="flex items-center gap-2">
             <MainCoin className="w-0 h-6 md:w-6"/>
             <div className="hidden md:flex gap-1">
-              {auth.user.balance[chain].toFixed(8)}{" "}
+              {auth.user.balance[chain].toFixed(3)}{" "}
               <div className="uppercase">{chain}</div>
             </div>
           </div>
@@ -79,7 +79,7 @@ export default function Dropdown() {
                   }}
                 >
                   <CoinIcon className="w-6 h-6"/>
-                  <div>{auth.user.balance[currency as TCoin].toFixed(8)}</div>
+                  <div>{auth.user.balance[currency as TCoin].toFixed(3)}</div>
                   <div className="uppercase">{currency}</div>
                 </div>
               );

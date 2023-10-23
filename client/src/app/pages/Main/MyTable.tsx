@@ -25,7 +25,7 @@ const MyTable = () => {
                 <div className="m-overflow flex items-center gap-2 py-2 mr-4">
                   <CoinIcon className="min-w-[32px] w-8 h-8" />
                   <span className="text-white">
-                    {bet.betAmount.toFixed(8)}
+                    {bet.betAmount.toFixed(3)}
                   </span>{" "}
                   {bet.chain}
                 </div>
@@ -35,7 +35,7 @@ const MyTable = () => {
                 >
                   x {bet.cashPoint.toFixed(2)}
                 </div>
-                <div className="text-white py-2">{bet.bonus.toFixed(8)}</div>
+                <div className="text-white py-2">{bet.bonus.toFixed(3)}</div>
                 <div className="text-white py-2 text-right">
                   {(bet.betAmount * (bet.cashPoint - 1)).toFixed(8)}
                 </div>
