@@ -55,7 +55,7 @@ const MyTable = () => {
                   <div className="m-overflow">
                     <div>
                       <span className="text-white">
-                        {bet.betAmount.toFixed(8)}
+                        {bet.betAmount.toFixed(3)}
                       </span>{" "}
                       {bet.chain}
                     </div>
@@ -75,12 +75,12 @@ const MyTable = () => {
               <div className="flex justify-between">
                 <div className="py-2">
                   <div className="text-xs">Bonus</div>
-                  <div className="text-white pt-1">{bet.bonus.toFixed(8)}</div>
+                  <div className="text-white pt-1">{bet.bonus.toFixed(3)}</div>
                 </div>
                 <div className="text-right py-2">
                   <div className="text-xs">Profit</div>
                   <div className="text-white pt-1">
-                    {(bet.betAmount * (bet.cashPoint - 1)).toFixed(8)}
+                    {(bet.betAmount * (bet.cashPoint - 1)).toFixed(3)}
                   </div>
                 </div>
               </div>

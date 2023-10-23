@@ -102,7 +102,7 @@ const Action = (props: any) => {
           <button
             onClick={() => {
               setBetAmount(
-                Math.min(Number(betAmount) * 2, maxBetAmount).toFixed(8)
+                Math.min(Number(betAmount) * 2, maxBetAmount).toFixed(3)
               );
             }}
             className="bg-card p-3 md:p-4 outline-none m-rounded flex-none anim hover:bg-border"
@@ -112,7 +112,7 @@ const Action = (props: any) => {
           <button
             onClick={() => {
               setBetAmount(
-                Math.max(Number(betAmount) / 2, minBetAmount).toFixed(8)
+                Math.max(Number(betAmount) / 2, minBetAmount).toFixed(3)
               );
             }}
             className="bg-card p-3 md:p-4 outline-none m-rounded flex-none anim hover:bg-border"

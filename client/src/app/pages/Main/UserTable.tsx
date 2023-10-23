@@ -76,7 +76,7 @@ const UserTable = () => {
                   <div className="text-secondary py-1">Bet</div>
                   <div className="flex items-center gap-2 py-1">
                     <CoinIcon className="w-4 h-4 flex-none"/>
-                    <div className="text-sm">{player.betAmount.toFixed(8)}</div>
+                    <div className="text-sm">{player.betAmount.toFixed(3)}</div>
                   </div>
                 </div>
                 <div className="text-right w-50">
@@ -96,7 +96,7 @@ const UserTable = () => {
                       ? (
                           Number(player.betAmount) *
                           Number(player.cashPoint - 1)
-                        ).toFixed(8)
+                        ).toFixed(3)
                       : "-"}
                   </div>
                 </div>

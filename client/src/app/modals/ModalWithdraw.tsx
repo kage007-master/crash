@@ -30,7 +30,7 @@ const ModalWithdraw = () => {
     limits[chain as TCoin][network],
     Number(maxAmount)
   );
-  const [Amount, setAmount] = useState(minAmount.toFixed(8));
+  const [Amount, setAmount] = useState(minAmount.toFixed(3));
 
   const onSetChain = (newchain: string) => {
     if (newchain != chain) {
@@ -75,7 +75,7 @@ const ModalWithdraw = () => {
       Number(Amount) > Number(maxAmount) ||
       Number(Amount) < Number(minAmount)
     )
-      setAmount(Math.min(Number(minAmount), Number(maxAmount)).toFixed(8));
+      setAmount(Math.min(Number(minAmount), Number(maxAmount)).toFixed(3));
     return () => {};
   }, [maxAmount]);
 
@@ -143,7 +143,7 @@ const ModalWithdraw = () => {
         <p className="uppercase">{`${Math.max(
           Number(Amount) - fees[chain as TCoin][network],
           0
-        ).toFixed(8)} ${chain}`}</p>
+        ).toFixed(3)} ${chain}`}</p>
       </div>
       <button
         className="my-2 border border-[#3CE5B5] rounded-xl p-3 flex items-center mx-auto text-[#3CE5B5]"

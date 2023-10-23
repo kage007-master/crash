@@ -73,7 +73,7 @@ export const authSlice = createSlice({
     setBalance: (state, action: PayloadAction<any>) => {
       let chain: TCoin = action.payload.chain;
       state.user.balance[chain] += action.payload.amount;
-      state.user.balance[chain] = Number(state.user.balance[chain].toFixed(8));
+      state.user.balance[chain] = Number(state.user.balance[chain].toFixed(3));
     },
   },
   extraReducers: (builder) => {

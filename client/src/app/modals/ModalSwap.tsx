@@ -25,12 +25,12 @@ const ModalSwap = () => {
   };
   const convert = (src: any, dest: any) => {
     setTo(
-      ((prices[src] * Number(from) * rate(dest)) / prices[dest]).toFixed(8)
+      ((prices[src] * Number(from) * rate(dest)) / prices[dest]).toFixed(3)
     );
   };
 
-  const [from, setfrom] = useState("1.00000000");
-  const [to, setTo] = useState("1.00000000");
+  const [from, setfrom] = useState("1.000");
+  const [to, setTo] = useState("1.000");
 
   useEffect(() => {
     axios.get("https://billing.ddog.club/prices").then((res) => {
@@ -76,12 +76,12 @@ const ModalSwap = () => {
         <p
           className="cursor-pointer hover:underline hover:text-[#0f0]"
           onClick={() => {
-            setfrom(user.balance[src as TCoin].toFixed(8));
+            setfrom(user.balance[src as TCoin].toFixed(3));
             setTo(
               (
                 (prices[src] * user.balance[src as TCoin] * rate(dest)) /
                 prices[dest]
-              ).toFixed(8)
+              ).toFixed(3)
             );
           }}
         >{`Avaliable: ${user.balance[src as TCoin]}`}</p>
@@ -90,7 +90,7 @@ const ModalSwap = () => {
         <NumberInput
           onChange={(e: any) => setfrom(e)}
           onBlur={() => {
-            setfrom(Number(from).toFixed(8));
+            setfrom(Number(from).toFixed(3));
             convert(src, dest);
           }}
           value={from}
@@ -126,7 +126,7 @@ const ModalSwap = () => {
         <NumberInput
           onChange={(e: any) => setTo(e)}
           onBlur={() => {
-            setTo(Number(to).toFixed(8));
+            setTo(Number(to).toFixed(3));
             setfrom(
               ((prices[dest] * Number(to)) / rate(dest) / prices[src]).toFixed(
                 8
@@ -152,7 +152,7 @@ const ModalSwap = () => {
       {prices && (
         <p className="my-2 uppercase">{`1 ${src} = ${(
           prices[src] / prices[dest]
-        ).toFixed(8)} ${dest}`}</p>
+        ).toFixed(3)} ${dest}`}</p>
       )}
       <div className="flex justify-between my-2">
         <p>Swap fee:</p>
