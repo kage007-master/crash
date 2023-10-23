@@ -15,6 +15,7 @@ interface Player {
 
 var timeElapsed = 0;
 var isRising = false;
+var crashPoint = 0;
 var crashTimeElapsed = 0;
 var GameID = "";
 var players: Player[] = [];
@@ -36,11 +37,13 @@ export const startNewRound = (io: any) => {
       user.save();
     }
   });
+  const x = Math.random();
+  crashPoint = Math.max(1, 0.97 / (1 - x));
   waitings = [];
   isRising = true;
   timeElapsed = 0;
   let timerId = setInterval(() => {
-    if (isRising && timeElapsed > 5 && Math.random() < 0.005) {
+    if (isRising && timeElapsed > 5 && f(timeElapsed) >= crashPoint) {
       isRising = false;
       crashTimeElapsed = 0;
       var newGame = new GameHistoryModel({
