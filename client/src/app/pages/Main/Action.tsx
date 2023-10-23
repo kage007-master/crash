@@ -196,7 +196,7 @@ const Action = (props: any) => {
             gameState.timeElapsed > 5 &&
             me &&
             me.cashPoint === 0 ? (
-            <p>
+            <p className="text-[14px]">
               {Number((me.betAmount * f(gameState.timeElapsed)).toFixed(3))}
               <p>Cash Out</p>
             </p>
