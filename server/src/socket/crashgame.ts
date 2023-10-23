@@ -108,7 +108,7 @@ export const addPlayer = async (player: Player) => {
   let user: any = await UserModel.findOne({ address: player.address });
   if (user && user.balance) {
     user.balance[player.chain] -= player.betAmount;
-    user.balance[player.chain] = Number(user.balance[player.chain].to);
+    user.balance[player.chain] = Number(user.balance[player.chain].toFixed(3));
     user.save();
   }
   return true;
